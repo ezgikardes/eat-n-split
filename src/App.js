@@ -1,4 +1,10 @@
-const initialFriends = [
+import { useState } from "react";
+import Button from "./Button";
+import FormAddFriend from "./FormAddFriend";
+import FormSplitBill from "./FormSplitBill";
+import { FriendsList } from "./FriendsList";
+
+export const initialFriends = [
   {
     id: 118836,
     name: "Clark",
@@ -20,23 +26,24 @@ const initialFriends = [
 ];
 
 export default function App() {
+  const [showAddFriend, setShowAddFriend] = useState(false);
+
+  function handleShowAddFriend() {
+    setShowAddFriend((show) => !show);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList />
+        {showAddFriend && <FormAddFriend />}
+        <Button onClick={handleShowAddFriend}>
+          {showAddFriend ? "Close" : "Add friend"}
+        </Button>
+      </div>
+      <div>
+        <FormSplitBill />
       </div>
     </div>
-  );
-}
-
-function FriendsList() {
-  const friends = initialFriends;
-
-  return (
-    <ul>
-      {friends.map((friend) => (
-        <li>{friend.name}</li>
-      ))}
-    </ul>
   );
 }
