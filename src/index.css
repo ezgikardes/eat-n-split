@@ -142,7 +142,7 @@ form {
 }
 .form-split-bill {
   grid-template-columns: 1fr 12rem;
-  padding: 3.2rem 4rem;
+  padding: 2.4rem 4rem;
 }
 
 label {
